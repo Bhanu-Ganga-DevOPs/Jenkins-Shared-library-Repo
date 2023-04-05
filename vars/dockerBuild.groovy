@@ -1,19 +1,19 @@
 
 // def call(String project, String ImageTag, String hubUser){
-
-//     sh """ 
-//     docker image build -t ${hubUser}/${project} .
-//     docker image tag ${hubUser}/${project} ${hubUser}/${project}:${ImageTag}
-//     docker image tag ${hubUser}/${project} ${hubUser}/${project}:latest
+    
+//     sh """
+//      docker image build -t ${hubUser}/${project} . 
+//      docker image tag ${hubUser}/${project} ${hubUser}/${project}:${ImageTag}
+//      docker image tag ${hubUser}/${project} ${hubUser}/${project}:latest
 //     """
-
 // }
 
-def call(String project, String ImageTag, String hubUser){
+
+// Building docker image into ECR
+def call(String aws_account_id, String region, String ecr-repoName){
     
     sh """
-     docker image build -t ${hubUser}/${project} . 
-     docker image tag ${hubUser}/${project} ${hubUser}/${project}:${ImageTag}
-     docker image tag ${hubUser}/${project} ${hubUser}/${project}:latest
+     docker build -t ${ecr-repoName} . 
+     docker tag ${ecr-repoName}:latest ${aws_account_id}.dkr.ecr.${region}.amazonaws.com/${ecr-repoName}:latest
     """
 }
