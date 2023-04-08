@@ -17,9 +17,6 @@
  def call(String aws_account_id, String region, String ecr_repoName){
     
     sh """
-     export AWS_ACCESS_KEY_ID= 'AKIAYCQG4N3WL75AEINR'
-
-    export AWS_SECRET_ACCESS_KEY='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'
 
      aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${aws_account_id}.dkr.ecr.${region}.amazonaws.com
     
