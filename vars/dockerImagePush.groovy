@@ -16,7 +16,7 @@
 
  def call(String aws_account_id, String region, String ecr_repoName){
  
-	withCredentials([<object of type com.cloudbees.jenkins.plugins.awscredentials.AmazonWebServicesCredentialsBinding>]) {
+	
     
 		 sh """
 
@@ -26,7 +26,7 @@
 		"""
 	
 	
-	}
+	
     
    
  }
