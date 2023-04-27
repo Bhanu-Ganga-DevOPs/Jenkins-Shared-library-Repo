@@ -4,13 +4,13 @@
              usernameVariable: "USER",
              passwordVariable: "PASS"
      )]) {
-
          registry_url = "registry.hub.docker.com/"
          sh "docker login -u '$USER' -p '$PASS' ${registry_url}"
-         docker.withRegistry("http://${registry_url}", "docker") {
-             sh "docker image push ${hubUser}/${project}:${ImageTag}"
-             sh "docker image push ${hubUser}/${project}:latest"
-         }
+     }
+
+     docker.withRegistry("http://${registry_url}", "docker") {
+         sh "docker image push ${hubUser}/${project}:${ImageTag}"
+         sh "docker image push ${hubUser}/${project}:latest"
      }
  }
 
