@@ -4,15 +4,14 @@
              usernameVariable: "USER",
              passwordVariable: "PASS"
      )]) {
-         registry_url = "registry.hub.docker.com/"
-         sh "docker login -u '$USER' -p '$PASS' ${registry_url}"
+         sh "docker login -u '$USER' -p '$PASS'"
      }
-
-     docker.withRegistry("http://${registry_url}", "docker") {
-         sh "docker image push ${hubUser}/${project}:${ImageTag}"
-         sh "docker image push ${hubUser}/${project}:latest"
-     }
+     sh "docker image push ${hubUser}/${project}:${ImageTag}"
+     sh "docker image push ${hubUser}/${project}:latest"
  }
+
+
+ //squ_1c8f4d8e04b2ae505590ab1945327d5054c3eba0
 
 
 // def call(String aws_account_id, String region, String ecr_repoName){
